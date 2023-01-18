@@ -1,14 +1,12 @@
 
 import './App.css';
-import { Text} from '@chakra-ui/react'
+import Footer from './Components/Pages/Footer';
 
 function App() {
   return (
-    <div className="App">
+    <div>
+<Footer/>
      
-      <Text as="h" fontSize="100px" >Reliance digital</Text>
-      
-      
     </div>
   );
 }
