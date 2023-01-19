@@ -1,15 +1,15 @@
 
 import './App.css';
-import { Text} from '@chakra-ui/react'
-import Cart from './Components/Cart';
+import Footer from './Components/Pages/Footer';
+import Navbar from './Components/navbar/Navbar';
+
 
 function App() {
   return (
-    <div className="App">
-     
-      <Text as="h" fontSize="100px" >Reliance digital</Text>
-      <Cart/>
-      
+    <div>
+   <Navbar/>
+<Footer/>
+    
     </div>
   );
 }
