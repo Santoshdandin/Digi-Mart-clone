@@ -8,7 +8,7 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsWindows } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
-import ProductsCard from '../components/ProductsCard';
+import ProductsCard from './ProductsCard';
 
 
 const Products = () => {
@@ -20,9 +20,9 @@ const nums = [1,2,3,4,5,6,7,8,9];
 
 
     useEffect(() => {
-         fetch(`https://rus-digital-televisions.onrender.com/mobilesandtablets?_page=${page}&_limit=8`)
+         fetch(`https://ruby-antelope-veil.cyclic.app/products?_page=${page}&_limit=16`)
          .then(res => res.json())
-         .then(res => setItems(res))
+         .then(res => setItems(res.data))
          .catch(err => console.log(err));
     },[page])
   return (
@@ -117,7 +117,7 @@ const nums = [1,2,3,4,5,6,7,8,9];
 
          <SimpleGrid columns={[1,2,2,4,4,4]} spacing={2} mt='2'>
          { items.map((el) => (
-            <ProductsCard key={el.id} img={el.img} title={el.name} price={el.price} mrp={el.mrp} discount={el.discount} />
+            <ProductsCard key={el._id} img={el.img} title={el.name} price={el.price} mrp={el.mrp} discount={el.discount} />
          ))}
         </SimpleGrid>
          
