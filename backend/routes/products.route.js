@@ -1,18 +1,6 @@
 const express = require("express");
 const productRoute = express.Router();
 const { productModel } = require("../models/products.model");
-const multer=require("multer");
-
-const upload=multer({
-  storage:multer.diskStorage({
-      destination:function(req,res,cb){
-          cb(null,"uploads")
-      },
-      filename:function(req,res,cb){
-          cb(null,Date.now()+"image.jpg")
-      }
-  })
-}).single("img");
 
 
 
@@ -22,23 +10,23 @@ productRoute.get("/", async (req, res) => {
   try {
     if (sort == "asc") {
         const data = await productModel.find({}).sort({ price: 1 });
-        res.send(data);
+        res.send({data:data});
     } else if (sort == "desc") {
       const data = await productModel.find({}).sort({ price: -1 });
-      res.send(data);
+      res.send({data:data});
     } else if (s) {
       const data = await productModel.find({
         $or: [{ name: { $regex: s } }, { brand: { $regex: s } }, { category: { $regex: s } }],
       });
-      res.send(data);
+      res.send({data:data});
     } else {
       const data = await productModel.find({})
       console.log(data.length)
-      res.send(data);
+      res.send({data:data});
     }
   } catch (err) {
     res.send("somthing went wrong");
-    console.log(err);
+    console.log({err:err});
   }
 });
 productRoute.get("/:category", async (req, res) => {
@@ -47,26 +35,23 @@ productRoute.get("/:category", async (req, res) => {
   try {
    
       const data = await productModel.find({category:cat });
-      res.send(data);
+      res.send({data:data});
     
   } catch (err) {
     res.send("somthing went wrong");
-    console.log(err);
+    console.log({err:err});
   }
 });
 
-productRoute.post("/create",upload, async (req, res) => {
+productRoute.post("/create", async (req, res) => {
   const payload = req.body;
+  
   try {
-    // const data = new productModel(payload);
-    // await data.save();
-   console.log(payload,req.file)
-    // const data= await productModel.insertMany(payload);
-    
-
-    res.send("product data added");
+    const data = new productModel(payload);
+    await data.save();
+    res.send({msg:"product added"});
   } catch (err) {
-    res.send("somthing went wrong");
+    res.send({err:err});
     console.log(err);
   }
 });
@@ -77,9 +62,9 @@ productRoute.patch("/update/:id", async (req, res) => {
   try {
     const data = await productModel.findByIdAndUpdate({ _id: ID }, payload);
 
-    res.send("product data updated");
+    res.send({msg:"product updated"});
   } catch (err) {
-    res.send("somthing went wrong");
+    res.send({err:err});
     console.log(err);
   }
 });
@@ -89,9 +74,9 @@ productRoute.delete("/delete/:id", async (req, res) => {
   try {
     const data = await productModel.findByIdAndDelete({ _id: ID });
 
-    res.send(`product data deleted with id:${ID}`);
+    res.send({msg:`product data deleted with id:${ID}`});
   } catch (err) {
-    res.send("somthing went wrong");
+    res.send({msg:"somthing went wrong"});
     console.log(err);
   }
 });
