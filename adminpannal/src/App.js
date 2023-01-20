@@ -3,22 +3,15 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 import CreateProd from './compontes/create_prod'
-import Home from './compontes/home';
+
+import Navabr from './compontes/navbar';
+import Home from './pages/home';
 
 function App() {
-  const [data,setData]=useState();
-  const getdata= async()=>{
-   let data=await axios.get("https://ruby-antelope-veil.cyclic.app/products?search=samsung");
-   
-  }
-  useEffect(()=>{
-getdata()
-  },[])
-
   return (
     <div >
      {/* <CreateProd/> */}
-
+  <Navabr/>
 <Home/>
     </div>
   )

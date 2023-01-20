@@ -1,0 +1,44 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    background-color: #c11f22;
+    position: fixed;
+   
+}
+.navbelo{
+    width: 100%;
+    height: 80px;
+    
+}
+.logo img{
+    width: 300px;
+    height: 50px;
+   
+    object-fit: cover;
+    
+}
+.search input{
+    width: 350px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.user{
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+}
+.user button{
+    width: 100px;
+    height: 35px;
+    border: none;
+    background-color: rgb(17, 15, 128);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
