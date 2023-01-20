@@ -40,10 +40,9 @@ const Cart = () => {
 
       </Box>
       
-      
 
       <Box w="30%" p="15px">
-        <Button w="100%" bgColor="#e42529" color="white">CHECKOUT</Button>
+        <Button w="100%" bgColor="#e42529" color="white" >CHECKOUT</Button>
         <Box p="20px 10px 20px 10px" border="1px solid lightgray" mt="15px">
           <Text fontSize="16px" fontWeight="500">PRICE DETAILS</Text>
           <HStack justifyContent="space-between">
