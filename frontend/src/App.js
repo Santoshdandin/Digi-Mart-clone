@@ -1,16 +1,18 @@
 
 import './App.css';
-import Footer from './Components/Pages/Footer';
-import Navbar from './Components/navbar/Navbar';
-import AllRoutes from './AllRoutes/AllRoutes';
+// import Footer from './Components/Pages/Footer';
+// import Navbar from './Components/navbar/Navbar';
+// import AllRoutes from './AllRoutes/AllRoutes';
+import Cart from './pages/Cart';
 
 
 function App() {
   return (
     <div>
-   <Navbar/>
+   {/* <Navbar/>
    <AllRoutes/>
-<Footer/>
+<Footer/> */}
+<Cart/>
     
     </div>
   );
