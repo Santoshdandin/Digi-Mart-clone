@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import { Box, Image, Text, Grid, GridItem, Checkbox } from '@chakra-ui/react'
 import { BiHeart } from "react-icons/bi";
+import { Link } from 'react-router-dom';
 
 
 
-const ProductsCard = ({img, title,price, mrp, discount}) => {
+const ProductsCard = ({img, title,price, mrp, discount, id}) => {
     const [ wish, setWish ] = useState(false);
+    console.log(id);
   return (
     <div>
       <Box border='1px' borderColor='gray.300' align='left' p='4' bg='white' cursor='pointer'>
-        <Image src={img} w='70%' m='auto'></Image>
+      <Link to={`/products/${id}`}> <Image src={img} w='70%' m='auto'></Image></Link>
         <Text color='blue' mt='2'>{title}</Text>
         <Box display='flex' fontSize='sm' mt='2'>  
         <Text fontWeight='medium'>{price}</Text>
@@ -27,6 +29,7 @@ const ProductsCard = ({img, title,price, mrp, discount}) => {
   
 </Grid>
       </Box>
+      
     </div>
   )
 }
