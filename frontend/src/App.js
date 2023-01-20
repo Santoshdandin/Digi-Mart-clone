@@ -2,13 +2,16 @@
 import './App.css';
 import Footer from './Components/Pages/Footer';
 import Navbar from './Components/navbar/Navbar';
+import AllRoutes from './AllRoutes/AllRoutes';
+
 
 function App() {
   return (
     <div>
-      <Navbar/>
+   <Navbar/>
+   <AllRoutes/>
 <Footer/>
-     
+    
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsWindows } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
-import ProductsCard from '../components/ProductsCard';
+import ProductsCard from './ProductsCard';
 
 
 const Products = () => {
