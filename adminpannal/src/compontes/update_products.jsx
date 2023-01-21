@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import product from "../images/images.png";
 const url = "https://wandering-plum-parka.cyclic.app/products/create";
-function CreateProd() {
+function UpdateProd() {
   const [img, setImg] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState();
@@ -25,7 +25,7 @@ function CreateProd() {
 
     try {
       await axios
-        .post(url, pay)
+        .patch(url, pay)
         .then(function (response) {
           console.log(response);
         })
@@ -126,7 +126,7 @@ function CreateProd() {
   );
 }
 
-export default CreateProd;
+export default UpdateProd;
 
 function convertToBase64(file) {
   return new Promise((resolve, reject) => {

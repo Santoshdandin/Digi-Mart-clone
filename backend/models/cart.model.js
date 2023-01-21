@@ -7,7 +7,7 @@ const cartSchema=mongoose.Schema({
    discount:String,
    brand:String,
    category:String,
-   userId:String,
+   userID:String,
 })
 
 const cartModel=mongoose.model("cart",cartSchema);
