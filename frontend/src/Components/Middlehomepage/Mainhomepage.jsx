@@ -6,6 +6,7 @@ import NinthpartTv from "./NinthpartTv";
 import Secondpart from "./Secondpart";
 import Sevenpart from "./Sevenpart";
 import Sixthpart from "./Sixthpart";
+import SpecialDay from "./SpecialDay";
 
 
 function Mainhomepage(){
@@ -19,6 +20,7 @@ function Mainhomepage(){
 <Sevenpart/>
 <Eightpart/>
 <NinthpartTv/>
+<SpecialDay/>
 </div>
     )
 }
