@@ -242,11 +242,11 @@ function Navbar() {
                       <List spacing="8px"  >
                       <ListItem  _hover={{ color: 'black' }}> <Link>Tablet Accessories</Link></ListItem>
                       <ListItem  _hover={{ color: 'black' }}> <Link>Mobile Accessories</Link></ListItem>
-                      <ListItem   _hover={{ color: 'black' }}><Link>Mobile Grips & Stands</Link></ListItem>
+                      <ListItem   _hover={{ color: 'black' }}><Link to='/mobile case'>Mobile Grips & Stands</Link></ListItem>
                       <ListItem  _hover={{ color: 'black' }}><Link>Car Mobile Holders</Link></ListItem>
                       <ListItem  _hover={{ color: 'black' }}> <Link>Memory Cards</Link></ListItem>
                       <ListItem  _hover={{ color: 'black' }}><Link>Cables & Cords</Link></ListItem>
-                      <ListItem  _hover={{ color: 'black' }}> <Link>Chargers & Adapters</Link></ListItem>
+                      <ListItem  _hover={{ color: 'black' }}> <Link to='/adapters'>Chargers & Adapters</Link></ListItem>
                       </List>
 
                       </Box>
@@ -322,7 +322,7 @@ function Navbar() {
                      
                       
                       <Box>
-                      <Heading as='h6' size='xs' pb="8px" _hover={{ color: 'red' }}><Link>Televisions</Link></Heading>
+                      <Heading as='h6' size='xs' pb="8px" _hover={{ color: 'red' }}><Link to='/smarttv'>Televisions</Link></Heading>
                       <List spacing="8px"  >
                         <ListItem  _hover={{ color: 'black' }}><Link>Smart TVs</Link></ListItem>
                         <ListItem  _hover={{ color: 'black' }}><Link>32 Inch TVs</Link></ListItem>
@@ -407,9 +407,9 @@ function Navbar() {
                     <List spacing="18px">
                 
                       <Box>
-                      <Heading as='h6' size='xs' pb="8px" _hover={{ color: 'red' }}><Link>Headphones & Headsets</Link></Heading>
+                      <Heading as='h6' size='xs' pb="8px" _hover={{ color: 'red' }}><Link to='/earphones'>Headphones & Headsets</Link></Heading>
                       <List spacing="8px" >
-                        <ListItem  _hover={{ color: 'black' }}><Link>True Wireless</Link></ListItem>
+                        <ListItem  _hover={{ color: 'black' }}><Link to='earbuds'>True Wireless</Link></ListItem>
                         <ListItem  _hover={{ color: 'black' }}><Link>Bluetooth Neckbands</Link></ListItem> 
                         <ListItem  _hover={{ color: 'black' }}> <Link>Wired Earphones</Link> </ListItem>
                         <ListItem  _hover={{ color: 'black' }}> <Link>On Ear Headphones</Link> </ListItem>
@@ -492,7 +492,7 @@ function Navbar() {
                      
                       
                       <Box>
-                      <Heading as='h6' size='xs' pb="8px" _hover={{ color: 'red' }}><Link>Air Conditioners</Link></Heading>
+                      <Heading as='h6' size='xs' pb="8px" _hover={{ color: 'red' }}><Link to='inverter'>Air Conditioners</Link></Heading>
                       <List spacing="8px"  >
                         <ListItem  _hover={{ color: 'black' }}><Link>Split Air Conditioners</Link></ListItem>
                         <ListItem  _hover={{ color: 'black' }}><Link>Window Air Conditioners</Link></ListItem> 
@@ -604,7 +604,7 @@ function Navbar() {
                     <List spacing="18px">
                      
                       <Box>
-                      <Heading as='h6' size='xs' pb="8px" _hover={{ color: 'red' }}><Link>Laptops</Link></Heading>
+                      <Heading as='h6' size='xs' pb="8px" _hover={{ color: 'red' }}><Link to='/laptop'>Laptops</Link></Heading>
                       <List spacing="8px"  >
                         <ListItem  _hover={{ color: 'black' }}><Link>Basic Use Laptops</Link></ListItem>
                         <ListItem  _hover={{ color: 'black' }}><Link>Student Laptops</Link></ListItem> 
@@ -670,7 +670,7 @@ function Navbar() {
                         <ListItem  _hover={{ color: 'black' }}><Link>Laptop Chargers & Adaptor</Link></ListItem> 
                         <ListItem  _hover={{ color: 'black' }}><Link>Laptop Batteries</Link></ListItem>
                         <ListItem  _hover={{ color: 'black' }}><Link>Hubs & Docks</Link></ListItem> 
-                        <ListItem  _hover={{ color: 'black' }}><Link>Laptop Bags & Sleeves</Link></ListItem> 
+                        <ListItem  _hover={{ color: 'black' }}><Link to='/laptop case'>Laptop Bags & Sleeves</Link></ListItem> 
                         <ListItem  _hover={{ color: 'black' }}><Link>Laptop Cooling Pad</Link></ListItem>
                         <ListItem  _hover={{ color: 'black' }}><Link>Laptop Screen Protectors</Link></ListItem> 
                         <ListItem  _hover={{ color: 'black' }}><Link>Laptop Tables & Stands</Link></ListItem> 
@@ -717,7 +717,7 @@ function Navbar() {
             <Flex  bg="purple.900" color="white" fontSize="13px" pl="34px" py="12px" gap="40px">
                     <List spacing="18px">
                       <Box>
-                      <Heading as='h6' size='xs' _hover={{ color: 'red' }}><Link>DSLR Cameras</Link></Heading>
+                      <Heading as='h6' size='xs' _hover={{ color: 'red' }}><Link to='/camera'>DSLR Cameras</Link></Heading>
                       </Box>
                       
                       <Box>
@@ -795,7 +795,7 @@ function Navbar() {
             <Flex  bg="purple.900" color="white" fontSize="13px" pl="34px" py="12px" gap="40px">
                     <List spacing="18px">
                       <Box>
-                      <Heading as='h6' size='xs' _hover={{ color: 'red' }}><Link>Microwave Ovens</Link></Heading>
+                      <Heading as='h6' size='xs' _hover={{ color: 'red' }}><Link to='/microwave oven'>Microwave Ovens</Link></Heading>
                       </Box>
                       
                       <Box>
@@ -930,7 +930,7 @@ function Navbar() {
             <Flex  bg="purple.900" color="white" fontSize="13px" pl="34px" py="12px" gap="40px">
                     <List spacing="18px">
                       <Box>
-                      <Heading as='h6' size='xs' _hover={{ color: 'red' }}><Link>Shavers & Trimmers</Link></Heading>
+                      <Heading as='h6' size='xs' _hover={{ color: 'red' }}><Link to='/trimmer'>Shavers & Trimmers</Link></Heading>
                       </Box>
                       
                       <Box>

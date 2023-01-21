@@ -9,7 +9,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { BsWindows } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import ProductsCard from './ProductsCard';
-
+import { useParams } from 'react-router-dom';
 
 const Products = () => {
 const nums = [1,2,3,4,5,6,7,8,9];
@@ -17,16 +17,24 @@ const nums = [1,2,3,4,5,6,7,8,9];
     const [ max, setMax ] = useState("");
     const [ page, setPage ] = useState(1);
     const [ items, setItems ] = useState([]);
+    const [ total, setTotal ] = useState([]);
     const [ sort, setSort ] = useState("");
+    const { name } = useParams();
 
     useEffect(() => {
-         fetch(`https://lime-confused-shrimp.cyclic.app/products/category/smarttv?_sort=${sort}&_page=${page}&_limit=12`)
+         fetch(`https://lime-confused-shrimp.cyclic.app/products/category/${name}?_sort=${sort}&_page=${page}&_limit=12`)
          .then(res => res.json())
          .then(res => setItems(res.data))
          .catch(err => console.log(err));
-    },[page, sort])
+
+         fetch(`https://lime-confused-shrimp.cyclic.app/products/category/${name}`)
+         .then(res => res.json())
+         .then(res => setTotal(res.data))
+         .catch(err => console.log(err));
+
+    },[page, sort, name])
     
-    
+    console.log(items);
 
 
   return (
@@ -97,8 +105,8 @@ const nums = [1,2,3,4,5,6,7,8,9];
           <Grid templateColumns='57% 45%' gap='auto' bg='white' mt='2' border='1px' borderColor='gray.300' >
            <GridItem w='100%' h='auto'>
             <Box p='2' align='left' bg='white'> 
-             <Text fontSize='2xl' fontWeight='bold'>LATEST <span>  </span> </Text>
-            <Text>(Showing 1- 12 products of  <span>{items.length}</span> products )</Text>    
+             <Text fontSize='2xl' fontWeight='bold'>LATEST <span> {name} </span> </Text>
+            <Text>(Showing 1- 12 products of  <span>{total.length}</span> products )</Text>    
             </Box>
            </GridItem>
            <GridItem w='100%' h='auto' mt='4' >
