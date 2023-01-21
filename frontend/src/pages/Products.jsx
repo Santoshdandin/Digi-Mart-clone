@@ -17,14 +17,18 @@ const nums = [1,2,3,4,5,6,7,8,9];
     const [ max, setMax ] = useState("");
     const [ page, setPage ] = useState(1);
     const [ items, setItems ] = useState([]);
-
+    const [ sort, setSort ] = useState("");
 
     useEffect(() => {
-         fetch(`https://rus-digital-televisions.onrender.com/mobilesandtablets?_page=${page}&_limit=8`)
+         fetch(`https://lime-confused-shrimp.cyclic.app/products/category/smarttv?_sort=${sort}&_page=${page}&_limit=12`)
          .then(res => res.json())
-         .then(res => setItems(res))
+         .then(res => setItems(res.data))
          .catch(err => console.log(err));
-    },[page])
+    },[page, sort])
+    
+    
+
+
   return (
     <div >
         <Box w='100%' pb='2' color='white' borderBottom='1px' borderColor='gray.300' display='flex'>
@@ -93,16 +97,16 @@ const nums = [1,2,3,4,5,6,7,8,9];
           <Grid templateColumns='57% 45%' gap='auto' bg='white' mt='2' border='1px' borderColor='gray.300' >
            <GridItem w='100%' h='auto'>
             <Box p='2' align='left' bg='white'> 
-             <Text fontSize='2xl' fontWeight='bold'>LATEST MOBILE PHONES</Text>
-            <Text>(Showing 1- 24 products of 26 products)</Text>    
+             <Text fontSize='2xl' fontWeight='bold'>LATEST <span>  </span> </Text>
+            <Text>(Showing 1- 12 products of  <span>{items.length}</span> products )</Text>    
             </Box>
            </GridItem>
            <GridItem w='100%' h='auto' mt='4' >
             <Box display='flex' mt='2' h='auto' align='right'>
                 <Text fontSize='md' fontWeight='medium'>Sort By:</Text>
-                <Button h='auto' ml='2' fontSize='xs'>Relevance</Button>
-                <Button h='auto' bg='none' border='1px' borderColor='green' ml='2' fontSize='xs'>Price(Low-High)</Button>
-                <Button h='auto' ml='2' fontSize='xs'>Price(High-Low)</Button>
+                <Button h='auto' ml='2' fontSize='xs' value={sort} onClick={() => setSort("")}>Relevance</Button>
+                <Button h='auto' bg='none' border='1px' borderColor='green' ml='2' fontSize='xs' value={sort} onClick={() => setSort("asc")}>Price(Low-High)</Button>
+                <Button h='auto' ml='2' fontSize='xs' value={sort} onClick={() => setSort("desc")}>Price(High-Low)</Button>
                 <Box border='1px' ml='2' p='1' fontSize='lg' color='grey'><GiHamburgerMenu /></Box>
                 <Box border='1px' ml='2' p='1' fontSize='lg' color='blue' bg='gray.100'><BsWindows /></Box>
             </Box>
@@ -110,14 +114,14 @@ const nums = [1,2,3,4,5,6,7,8,9];
          </Grid>
          <Box display='flex' bg='white' mt='2' p='4'>
             <Text>Filters:</Text>
-            <Box border='1px' borderColor='gray.400' ml='2' p='1' pl='3' pr='3' display='flex'>latest-mobiles-jan-23  <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} /> </Box>
+            <Box border='1px' borderColor='gray.400' ml='2' p='1' pl='3' pr='3' display='flex'>latest-  -jan-23  <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} /> </Box>
             <Box border='1px' borderColor='gray.400' ml='2' p='1' pl='3' pr='3' display='flex'>Exclude out of Stock   <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} />  </Box>
             <Box border='1px' borderColor='blue.400' ml='2' p='1' pl='3' pr='3' bg='blue.300' display='flex' color='white' >Clear All    <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} /> </Box>
          </Box>
 
          <SimpleGrid columns={[1,2,2,4,4,4]} spacing={2} mt='2'>
          { items.map((el) => (
-            <ProductsCard key={el.id} img={el.img} title={el.name} price={el.price} mrp={el.mrp} discount={el.discount} />
+            <ProductsCard key={el._id} img={el.img} title={el.name} price={el.price} mrp={el.mrp} discount={el.discount} id={el._id} />
          ))}
         </SimpleGrid>
          

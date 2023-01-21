@@ -1,0 +1,86 @@
+.imagePart{
+    height: 200px;
+}
+.title_lapi{
+    width: 100%;
+    /* overflow-y: hidden; */
+    color: #003380;
+    box-sizing: border-box;
+}
+.title_lapi:hover{
+    color: red;
+    cursor: pointer;
+}
+.price{
+    font-weight: 600;
+    margin-top: 10px;
+}
+.offer{
+    color: #666;
+    font-weight: 400;
+}
+.off{
+    color: #666;
+    font-weight: 400;
+    text-decoration: line-through;
+    
+}
+.viewover{
+  color: blue;  
+}
+.viewover:hover{
+    color: red;
+    cursor: pointer;
+}
+.apnaGrid{
+    height: 600px;
+    width: 100%;
+    
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-content: space-between;
+}
+.rang{
+   background:#eee; 
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+.contain{
+    
+    display: grid;
+    grid-template-rows: 110px;
+    grid-template-columns: repeat(4,1fr);
+    justify-content: space-around;
+    width: 100%;
+    gap: 20px;
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.contain div{
+   
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.contain div>img{
+    height: 40px;
+    width: 40px;
+}
+.subhead{
+    font-family: Roboto,"system-ui",sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #003380;
+}
+.contain p{
+    font-size: 11px;
+    color: black;
+}
