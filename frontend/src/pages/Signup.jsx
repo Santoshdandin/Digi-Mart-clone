@@ -18,13 +18,7 @@ function Signup() {
 
   const toast = useToast()
 
-  const alertSuccess = ()=>{
-    return (
-      
-alert("Registration Success")
-    )
-    
-  }
+  
 
   return (
     <div>
@@ -68,7 +62,7 @@ alert("Registration Success")
     
             <FormControl>
               <Center>
-                <Button onClick={alertSuccess}
+                <Button 
      
            w="full"  _hover={{
                         bg: "red.600",
