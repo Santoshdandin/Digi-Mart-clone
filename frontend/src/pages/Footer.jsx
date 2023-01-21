@@ -5,7 +5,6 @@ import {
   Text,
   Heading,
   ListItem,
-  Link,
   List,
   Wrap,
   Img,
@@ -16,6 +15,7 @@ import {
 import { Icon } from "@chakra-ui/react";
 
 import { FaFacebookSquare, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -33,7 +33,8 @@ function Footer() {
               <List spacing={1} fontSize="15px">
                 
                 <ListItem>
-                  <Link>Smartphones</Link>
+                <Link to="/products" color="white">Smartphones</Link>
+                  
                 </ListItem>
 
                 <ListItem>
