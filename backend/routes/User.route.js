@@ -25,7 +25,7 @@ userRouter.post("/register", async (req,res)=>{
         const existUser = await UserModel.find({ email })
 
 if(existUser.length>0){
-    res.send({"msg":"User already exits, Please try login"});
+    res.send({"msg":"User already exists","signup":false});
 } else {
     bcrypt.hash(password,5, async (err,secure_password)=>{
         if(err){
@@ -38,9 +38,8 @@ if(existUser.length>0){
     })
 }
 
-        
     } catch (error) {
-        res.send({"error":"Error in registering user"})
+        res.send({"msg":"Error in registering user"})
         res.send(error)
     }
 })
