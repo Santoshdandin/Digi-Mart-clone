@@ -41,7 +41,7 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { MdOutlineMyLocation } from "react-icons/md";
-import Logo_21 from "../photo/Logo_21.png"
+import logo1 from "../photo/logo1.png"
 import Bestphn from "../photo/Bestphn.jpg"
 import tcl from "../photo/tcl.jpg"
 import earphn from "../photo/earphn.jpg"
@@ -121,11 +121,13 @@ function Navbar() {
             <Link to="/">
               <Img
                 // src="https://www.reliancedigital.in/build/client/images/loaders/rd_logo.svg"
-                src={Logo_21}
-                w="200px"
+                src={logo1}
+                w="250px"
                 h="60px"
+              
                 // maxW="100%"
                 // verticalAlign="baseline"
+                objectFit="cover"
               />
             </Link>
           </Box>
