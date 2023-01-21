@@ -14,7 +14,14 @@ app.use(cors({
 
 app.use(express.json({limit: '2mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
+app.get("/",(req,res)=>{
+    try{
+res.send("Home page of api use end points")
+    }catch(err){
+        res.send(err);
 
+    }
+})
 app.use("/users",userRouter)
 app.use("/products",productRoute);
 app.use(authenticate)

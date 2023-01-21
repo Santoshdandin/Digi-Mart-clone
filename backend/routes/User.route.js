@@ -70,5 +70,15 @@ userRouter.post("/login", async(req,res)=>{
     }
 })
 
+userRouter.delete("/delete/:id", async (req, res) => {
+  let id=req.params.id
+    try {
+      let users=await UserModel.findByIdAndDelete({_id:id})
+      res.send({msg:"user deleted"})
+    } catch (error) {
+      console.log(error);
+      res.send({"msg":"something Went wrong "})
+    }        
+});
 
 module.exports = {userRouter}
