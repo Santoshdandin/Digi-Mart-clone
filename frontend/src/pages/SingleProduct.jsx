@@ -15,11 +15,32 @@ const SingleProduct = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://lime-confused-shrimp.cyclic.app/products/${id}`)
+    fetch(`https://wandering-plum-parka.cyclic.app/products/${id}`)
     .then(res => res.json())
-    .then(res => setProduct(res.data[0]))
+    .then(res => setProduct( res[0] ))
     .catch(err => console.log(err));
 },[id])
+
+
+
+const handleClick = () => {
+  fetch(`https://wandering-plum-parka.cyclic.app/cart/create`, {
+    method:"POST",
+    body: JSON.stringify({
+      "name": product.name ,
+        "img": product.img,
+        "price": product.price,
+        "mrp": product.mrp,
+        "discount": product.discount,
+        "brand": product.brand,
+        "category": product.category,
+    }),
+    headers: {
+      "Content-Type":"application/json",
+      "Authorization": localStorage.getItem("token"),
+    }
+  })
+}
 
 
 console.log(product);
@@ -134,7 +155,7 @@ console.log(product);
                 <Text fontSize='xs' mt='2' ml='2' color='blue'>*Delivery assurance is subject to our delivery locations staying open as per govt. regulations</Text>
               </Box>
               <Box display='flex' ml='2' gap='2' mt='4'>
-                <Button w='48%' bg='red.600' color='white' h='12'>ADD TO CART</Button>
+                <Button w='48%' bg='red.600' color='white' h='12' onClick = {handleClick}>ADD TO CART</Button>
                 <Button w='48%' bg='orange.500' color='white' h='12'>BUY NOW</Button>
               </Box>
           </Box>
