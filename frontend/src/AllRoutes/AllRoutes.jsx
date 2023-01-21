@@ -17,10 +17,12 @@ function AllRoutes() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/signup" element={<Signup/>}></Route>
-        <Route path="/products" element={<Products/>}></Route>
-        <Route path="/products/:id" element={<SingleProduct />}></Route>
+
+        <Route path="/:name" element={<Products/>}></Route>
+        <Route path="/:name/:id" element={<SingleProduct />}></Route>
         <Route path="/cart" element={<Cart/>}></Route>
-        {/* <Route path="*" element={<Pagenotfound/>}></Route> */}
+
+        <Route path="*" element={<Pagenotfound/>}></Route>
     </Routes>
 
     </div>
