@@ -22,19 +22,19 @@ const nums = [1,2,3,4,5,6,7,8,9];
     const { name } = useParams();
 
     useEffect(() => {
-         fetch(`https://lime-confused-shrimp.cyclic.app/products/category/${name}?_sort=${sort}&_page=${page}&_limit=12`)
+         fetch(`https://wandering-plum-parka.cyclic.app/products/category/${name}?search=samsung&_sort=${sort}&_page=${page}&_limit=12`)
          .then(res => res.json())
-         .then(res => setItems(res.data))
+         .then(res => setItems(res))
          .catch(err => console.log(err));
 
-         fetch(`https://lime-confused-shrimp.cyclic.app/products/category/${name}`)
+         fetch(`https://wandering-plum-parka.cyclic.app/products/products/category/${name}`)
          .then(res => res.json())
-         .then(res => setTotal(res.data))
+         .then(res => setTotal( res ))
          .catch(err => console.log(err));
 
     },[page, sort, name])
     
-    console.log(items);
+    console.log(total);
 
 
   return (
@@ -43,6 +43,8 @@ const nums = [1,2,3,4,5,6,7,8,9];
         <FaHome style={{marginTop:"8px", marginLeft:"10px", color:"grey", fontSize:"18px"}}/>
         <ChevronRightIcon style={{color:"grey", fontSize:"20px", marginTop:"8px"}}/>
         <Text color='grey' mt='1'>Search</Text>
+        <ChevronRightIcon style={{color:"grey", fontSize:"20px", marginTop:"8px"}}/>
+        <Text color='grey' mt='1'>{name}</Text>
         </Box>
         <Grid templateColumns='21% 78.5%' gap={1} bg='gray.100'>
           <GridItem w='100%' h='auto' p='2' >
@@ -79,15 +81,15 @@ const nums = [1,2,3,4,5,6,7,8,9];
             </Box>
             <Box h='auto' p='3' pl='4' border='1px' borderColor='gray.300' mt='2' align='left' bg='white'>
                 <Text align='left' fontSize='md' fontWeight='medium' color='blackAlpha.800'>Category</Text>
-                <Checkbox mt='2' colorScheme='blue' >Smartphones</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' >{name}</Checkbox>
             </Box>
             <Box h='auto' p='3' pl='4' border='1px' borderColor='gray.300' mt='2' align='left' display='grid' bg='white'>
                 <Text align='left' fontSize='md' fontWeight='medium' color='blackAlpha.800'>Brand</Text>
                 <Checkbox mt='2' colorScheme='blue' >Samsung</Checkbox>
                 <Checkbox mt='2' colorScheme='blue' >Xiaomi</Checkbox>
-                <Checkbox mt='2' colorScheme='blue' >OPPO</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' >LG</Checkbox>
                 <Checkbox mt='2' colorScheme='blue' >Tecno</Checkbox>
-                <Checkbox mt='2' colorScheme='blue' >VIVO</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' >Sony</Checkbox>
                 <Checkbox mt='2' colorScheme='blue' >Realme</Checkbox>
             </Box>
           </GridItem>
@@ -122,7 +124,7 @@ const nums = [1,2,3,4,5,6,7,8,9];
          </Grid>
          <Box display='flex' bg='white' mt='2' p='4'>
             <Text>Filters:</Text>
-            <Box border='1px' borderColor='gray.400' ml='2' p='1' pl='3' pr='3' display='flex'>latest-  -jan-23  <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} /> </Box>
+            <Box border='1px' borderColor='gray.400' ml='2' p='1' pl='3' pr='3' display='flex'>latest- {name} -jan-23  <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} /> </Box>
             <Box border='1px' borderColor='gray.400' ml='2' p='1' pl='3' pr='3' display='flex'>Exclude out of Stock   <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} />  </Box>
             <Box border='1px' borderColor='blue.400' ml='2' p='1' pl='3' pr='3' bg='blue.300' display='flex' color='white' >Clear All    <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} /> </Box>
          </Box>
