@@ -13,7 +13,10 @@ const Checkout = () => {
     <Box>
       <HStack>
       <Button bgColor="#e42529" color="white" >DELIIVER HERE</Button>
+
+
         <Button variant='outline' onClick={onOpen} >ADD NEW SHIPPING ADDRESS</Button>
+        
       </HStack>
       
     </Box>
