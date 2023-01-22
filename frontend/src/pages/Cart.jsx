@@ -1,14 +1,69 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Box, Button, Divider, Flex, HStack, Image, Text} from "@chakra-ui/react"
 import { useState } from 'react'
+import { useParams } from 'react-router-dom';
 
 const Cart = () => {
   const [count, setCount]=useState(1)
+  const [ product, setProduct ] = useState([]);
+  const { id } = useParams();
+
+//   useEffect(() => {
+//     fetch(`https://wandering-plum-parka.cyclic.app/cart`, {
+//       headers: {
+//         "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2NkMDViNWZhZjBjOTFiMWQxNzE0MmEiLCJpYXQiOjE2NzQzODA3MzV9.WC3gSU1ttIAMH0FAhLHkm7EHeoPCobjkROhA56XaaeE",
+//       }
+//     })
+
+//     .then(res => res.json())
+//     .then(res => 
+//       console.log(res))
+      
+//     .catch(err => console.log(err));
+// },[id])
+
+useEffect(() => {
+  fetch(`https://wandering-plum-parka.cyclic.app/cart`, {
+    headers: {
+      "Authorization":localStorage.getItem("token")
+
+    }
+  })
+  .then(res => res.json())
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
+
+  
+
+},[id])
+
+// console.log(product)
+
+// const handleClick = () => {
+//   fetch(`https://wandering-plum-parka.cyclic.app/cart/create`, {
+//     method:"POST",
+//     body: JSON.stringify({
+//       "name": product.name ,
+//         "img": product.img,
+//         "price": product.price,
+//         "mrp": product.mrp,
+//         "discount": product.discount,
+//         "brand": product.brand,
+//         "category": product.category,
+//     }),
+//     headers: {
+//       "Content-Type":"application/json",
+      // "Authorization": localStorage.getItem("token"),
+//     }
+//   })
+// }
 
 
   return (
     <Box w="90%" m="auto">
       <Flex flexDirection={["column", "column", "row", "row"]}>
+
+        {product.map((el)=>{
 
       <Box w={["100%","100%","50%","70%"]}>
 
@@ -16,7 +71,7 @@ const Cart = () => {
         <Flex flexDirection={["column", "column", "column", "row"]}>
 
         <Box alignItems="center" w={["100%","100%","100%","20%"]} >
-          <Image m="auto" w="130px" h="150px" src='https://www.reliancedigital.in/medias/Reconnect-MUA-2.4A-2U-WRF-2-USB-AC-Adapter-491183487-1?context=bWFzdGVyfGltYWdlc3w3ODQ5NnxpbWFnZS9qcGVnfGltYWdlcy9oOGYvaDI1Lzg4OTA4MDI5Mjk2OTQuanBnfDZmYTllZDA4OTE3OGZjZmM4NjQyYTNjMzk2N2JlZTRlYWJkY2NhZTk5MDdjZWE3MWE5MzE3Njg2YzgwM2U0Njg'/>
+          <Image m="auto" w="130px" h="150px" src={el.img}/>
           <Flex m="auto" w="120px">
             <Button variant="outline" onClick={count-1}>-</Button>
             <Box m="auto">{count}</Box>
@@ -25,7 +80,7 @@ const Cart = () => {
           </Flex>
         </Box>
         <Box p="10px" w={["100%","100%","100%","45%"]}>
-          <Text color="#0f4a8a">Reconnect MUA 2.4A-2U-WRF 2 USB 2.4 Amp AC Adapter</Text>
+          <Text color="#0f4a8a">{product.name}Reconnect MUA 2.4A-2U-WRF 2 USB 2.4 Amp AC Adapter</Text>
         </Box>
         <Box p="10px" textAlign="right" w={["100%","100%","100%","45%"]}>
           <Text fontWeight="bold">₹699</Text>
@@ -39,7 +94,7 @@ const Cart = () => {
         </Box>
 
       </Box>
-      
+      })}
 
       <Box w={["100%","100%","50%","30%"]} p="15px">
         <Button w="100%" bgColor="#e42529" color="white" >CHECKOUT</Button>

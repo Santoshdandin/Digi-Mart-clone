@@ -6,7 +6,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { BiStore } from "react-icons/bi";
 import { MdDeliveryDining } from "react-icons/md";
 import { SiPluscodes } from "react-icons/si";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 
