@@ -3,7 +3,8 @@ import './App.css';
 // import Footer from './Components/Pages/Footer';
 // import Navbar from './Components/navbar/Navbar';
 // import AllRoutes from './AllRoutes/AllRoutes';
-import Cart from './pages/Cart';
+//import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
    {/* <Navbar/>
    <AllRoutes/>
 <Footer/> */}
-<Cart/>
+{/* <Cart/> */}
+<Checkout/>
     
     </div>
   );
