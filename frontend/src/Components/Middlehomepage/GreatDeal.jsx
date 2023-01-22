@@ -58,7 +58,7 @@ function Fifthpart(){
           <SimpleGrid columns={[1, 2, 4]}>
             {homeDeals.map((img) => (
               <Box mr="20px" mb="1px" p="10px" _hover={{w:"300px"}}>
-                <Link>
+                <Link >
                   <Img w="100%" src={img.image}
                    />
                 </Link>

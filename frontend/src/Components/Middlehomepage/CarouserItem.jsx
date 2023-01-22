@@ -47,7 +47,7 @@ const bestDealsSlider = [
   },
 ];
 
-function Secondpart() {
+function CarouserItem() {
   return (
     <div>
      <Carousel
@@ -70,4 +70,4 @@ function Secondpart() {
   );
 }
 
-export  default Secondpart;
+export  default CarouserItem;

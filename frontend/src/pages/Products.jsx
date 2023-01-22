@@ -3,7 +3,7 @@ import { FaHome } from 'react-icons/fa';
 import { Box, Text, Grid, GridItem, Input,   RangeSlider,
     RangeSliderTrack,
     RangeSliderFilledTrack,
-    RangeSliderThumb, Button, Checkbox, SimpleGrid } from '@chakra-ui/react'
+    RangeSliderThumb, Button, Checkbox, SimpleGrid, Stack, Skeleton } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsWindows } from "react-icons/bs";
@@ -13,6 +13,7 @@ import { useParams } from 'react-router-dom';
 
 const Products = () => {
 const nums = [1,2,3,4,5,6,7,8,9];
+    const [isLoading, setIsLoading] = useState(true);
     const [ min, setMin ] = useState("");
     const [ max, setMax ] = useState("");
     const [ page, setPage ] = useState(1);
@@ -22,6 +23,10 @@ const nums = [1,2,3,4,5,6,7,8,9];
     const { name } = useParams();
 
     useEffect(() => {
+      setTimeout(() => {
+      setIsLoading(false);
+      },2000);
+
          fetch(`https://wandering-plum-parka.cyclic.app/products/category/${name}?search=samsung&_sort=${sort}&_page=${page}&_limit=12`)
          .then(res => res.json())
          .then(res => setItems(res))
@@ -32,8 +37,16 @@ const nums = [1,2,3,4,5,6,7,8,9];
          .then(res => setTotal( res ))
          .catch(err => console.log(err));
 
-    },[page, sort, name])
+    },[page, sort, name ])
     
+    const samsungFilter = () => {
+         let filtered = items.filter(function(el) {
+          return el.brand==="samsung";
+         })
+         console.log(filtered);
+         setItems(filtered);
+    }
+
     console.log(total);
 
 
@@ -85,7 +98,7 @@ const nums = [1,2,3,4,5,6,7,8,9];
             </Box>
             <Box h='auto' p='3' pl='4' border='1px' borderColor='gray.300' mt='2' align='left' display='grid' bg='white'>
                 <Text align='left' fontSize='md' fontWeight='medium' color='blackAlpha.800'>Brand</Text>
-                <Checkbox mt='2' colorScheme='blue' >Samsung</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' onClick = { samsungFilter } >Samsung</Checkbox>
                 <Checkbox mt='2' colorScheme='blue' >Xiaomi</Checkbox>
                 <Checkbox mt='2' colorScheme='blue' >LG</Checkbox>
                 <Checkbox mt='2' colorScheme='blue' >Tecno</Checkbox>
@@ -128,12 +141,18 @@ const nums = [1,2,3,4,5,6,7,8,9];
             <Box border='1px' borderColor='gray.400' ml='2' p='1' pl='3' pr='3' display='flex'>Exclude out of Stock   <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} />  </Box>
             <Box border='1px' borderColor='blue.400' ml='2' p='1' pl='3' pr='3' bg='blue.300' display='flex' color='white' >Clear All    <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} /> </Box>
          </Box>
-
-         <SimpleGrid columns={[1,2,2,4,4,4]} spacing={2} mt='2'>
-         { items.map((el) => (
-            <ProductsCard key={el._id} img={el.img} title={el.name} price={el.price} mrp={el.mrp} discount={el.discount} id={el._id} />
-         ))}
-        </SimpleGrid>
+         {isLoading ? (
+        (<SimpleGrid columns={[1,2,2,4,4,4]} spacing={2} mt='2'>
+        { items.map((el) => (
+           <Skeleton h='350px' key={Math.random()} />
+        ))}
+       </SimpleGrid>)
+      ) : (<SimpleGrid columns={[1,2,2,4,4,4]} spacing={2} mt='2'>
+      { items.map((el) => (
+         <ProductsCard key={el._id} img={el.img} title={el.name} price={el.price} mrp={el.mrp} discount={el.discount} id={el._id} />
+      ))}
+     </SimpleGrid>)}
+         
          
          <Box mt='2' bg='white' p='6'>
             { nums.map((el) => (

@@ -101,7 +101,7 @@ if(payload.mobile.length<10){
 <div>
 
   
-<Box display="flex" justifyContent="flex-end" mr="20px">
+<Box display="flex" justifyContent="center" mr="20px">
 
 
 
