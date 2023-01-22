@@ -20,34 +20,47 @@ const nums = [1,2,3,4,5,6,7,8,9];
     const [ items, setItems ] = useState([]);
     const [ total, setTotal ] = useState([]);
     const [ sort, setSort ] = useState("");
+    const [ filter, setFilter ] = useState("");
+  
     const { name } = useParams();
 
     useEffect(() => {
       setTimeout(() => {
       setIsLoading(false);
       },2000);
-
-         fetch(`https://wandering-plum-parka.cyclic.app/products/category/${name}?search=samsung&_sort=${sort}&_page=${page}&_limit=12`)
+           
+      
+         fetch(`https://wandering-plum-parka.cyclic.app/products/category/${name}?_sort=${sort}&_page=${page}&_limit=12`)
          .then(res => res.json())
          .then(res => setItems(res))
          .catch(err => console.log(err));
 
-         fetch(`https://wandering-plum-parka.cyclic.app/products/products/category/${name}`)
+         fetch(`https://wandering-plum-parka.cyclic.app/products/category/${name}`)
          .then(res => res.json())
          .then(res => setTotal( res ))
          .catch(err => console.log(err));
 
-    },[page, sort, name ])
+    },[ page, sort, name, filter ])
     
-    const samsungFilter = () => {
-         let filtered = items.filter(function(el) {
-          return el.brand==="samsung";
+    const handleFilter = (check, brand) => {
+      
+        setFilter(brand);
+        let filtered = items.filter(function(el) {
+          return el.brand===filter;
          })
-         console.log(filtered);
+         
          setItems(filtered);
+      
+      
+         
+      
+      
+      console.log(check);
+      console.log(brand);
+        
     }
-
-    console.log(total);
+ 
+  
 
 
   return (
@@ -98,12 +111,12 @@ const nums = [1,2,3,4,5,6,7,8,9];
             </Box>
             <Box h='auto' p='3' pl='4' border='1px' borderColor='gray.300' mt='2' align='left' display='grid' bg='white'>
                 <Text align='left' fontSize='md' fontWeight='medium' color='blackAlpha.800'>Brand</Text>
-                <Checkbox mt='2' colorScheme='blue' onClick = { samsungFilter } >Samsung</Checkbox>
-                <Checkbox mt='2' colorScheme='blue' >Xiaomi</Checkbox>
-                <Checkbox mt='2' colorScheme='blue' >LG</Checkbox>
-                <Checkbox mt='2' colorScheme='blue' >Tecno</Checkbox>
-                <Checkbox mt='2' colorScheme='blue' >Sony</Checkbox>
-                <Checkbox mt='2' colorScheme='blue' >Realme</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' value='oppo' onChange = { (e)=> handleFilter(e.target.checked, e.target.value) } >Oppo</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' value='inbase' onChange = { (e)=> handleFilter(e.target.checked, e.target.value) } >Inbase</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' value='realme' onChange = { (e)=> handleFilter(e.target.value, e.target.value) } >Realme</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' value='nokia' onChange = { (e)=> handleFilter(e.target.value, e.target.value) } >Nokia</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' value='belkin' onChange = { (e)=> handleFilter(e.target.value, e.target.value) } >Belkin</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' value='portronics' onChange = { (e)=> handleFilter(e.target.value, e.target.value) } >Portronics</Checkbox>
             </Box>
           </GridItem>
 
