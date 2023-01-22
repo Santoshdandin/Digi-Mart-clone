@@ -3,9 +3,9 @@ const cartRouter=express.Router();
 const {cartModel}=require("../models/cart.model")
 const {UserModel}=require("../models/User.model")
 cartRouter.get("/",async (req,res)=>{
-    const userid=req.body.userID
+    // const userid=req.body.userID
     try{
-       const data=await cartModel.find({userID:userid});
+       const data=await cartModel.find();
        res.send(data)
     }catch(error){
         res.status(409).json({ message : error.message })

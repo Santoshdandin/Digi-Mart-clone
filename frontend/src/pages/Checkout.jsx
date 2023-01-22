@@ -103,7 +103,7 @@ const Checkout = () => {
   return (
     <>
     <Box>
-      <HStack>
+      <HStack p="20px">
       <Button bgColor="#e42529" color="white" >DELIIVER HERE</Button>
         <Button variant='outline' onClick={onOpen} >ADD NEW SHIPPING ADDRESS</Button>
       </HStack>

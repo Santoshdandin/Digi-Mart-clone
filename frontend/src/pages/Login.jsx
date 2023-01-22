@@ -49,7 +49,7 @@ const handleLogin = (e) =>{
         .then(res=>{
           console.log(res)
           localStorage.setItem("token",res.token)
-          localStorage.setItem("user",JSON.stringify(res))
+          localStorage.setItem("user", JSON.stringify(res.userData) )
         if(res.msg==="Login Successfull"){
           toast({
             title:"Login Successfull",
