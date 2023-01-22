@@ -1,6 +1,7 @@
 import { StarIcon } from "@chakra-ui/icons";
-import { Badge, Box, Divider, HStack, Heading, Image, Link, Tag, Text, VStack } from "@chakra-ui/react";
+import { Badge, Box, Divider, HStack, Heading, Image, Tag, Text, VStack } from "@chakra-ui/react";
 import Carousel from "better-react-carousel";
+import { Link } from "react-router-dom";
 let smartphone=[ {"id": "1-mobile",
 "title":"Samsung Galaxy S21 FE 5G 128 GB, 8 GB, Graphite, Mobile Phone",
 "image":"https://www.reliancedigital.in/medias/Samsung-SM-G990EZAIINU-Smartphone-492575018-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w4ODU2OHxpbWFnZS9qcGVnfGltYWdlcy9oNmIvaDA5Lzk4NzkxNzc3NTY3MDIuanBnfDY3NTcyYWI1ZjU2NGE5NTVmMDFmNDNhOTRkNWMyNDkyNzc3NjQ4ZTE0N2FhZjg3ODIxZjQxNTVkNzc3ZmJjNzM",
@@ -173,7 +174,7 @@ loop: true
 ]}>
     {smartphone.map((smartphone) => (
       <Carousel.Item>
-
+<Link to="/smartphones">
         <Box textAlign="left">
           <Box w="220px" h="185px">
           <Image cursor="pointer" w="180px" _hover={{
@@ -259,6 +260,7 @@ loop: true
             </Badge>
           </Box>
         </Box>
+        </Link>
       </Carousel.Item>
     ))}
   </Carousel>

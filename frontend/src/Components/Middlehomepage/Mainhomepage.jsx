@@ -1,29 +1,30 @@
 import Accessories from "./Accessories";
 import Bottomicon from "./BottomIcon";
 import Camera from "./Camera";
-import Eightpart from "./Eightpart";
-import Fifthpart from "./Fifthpart";
-import Firstpart from "./Firstpart";
-import Fourthpart from "./Fourthpart";
+import Eightpart from "./Laptops";
+import Fifthpart from "./GreatDeal";
 import Homeappliance from "./Homeappliance";
-import NinthpartTv from "./NinthpartTv";
+import NinthpartTv from "./TelevisonNew";
 import Personalcare from "./Personalcare";
-import Secondpart from "./Secondpart";
-import Sevenpart from "./Sevenpart";
-import Sixthpart from "./Sixthpart";
+
+import Sevenpart from "./BrandPromise";
+import Sixthpart from "./BestDealSlider";
 import SmartPhone from "./SmartPhone";
 import Smartwatch from "./SmartWatch";
 import SpecialDay from "./SpecialDay";
 import Washing from "./WashingMachine";
+import CarouselBanner from "./CarouselBanner";
+import CarouserItem from "./CarouserItem";
+import HomeDeals from "./HomeDeals";
 
 
 function Mainhomepage(){
     return(
 <div>
-<Firstpart/>
-<Secondpart/>
+<CarouselBanner/>
+<CarouserItem/>
 <Smartwatch/>
-<Fourthpart/>
+<HomeDeals/>
 <Fifthpart/>
 <Sixthpart/>
 <Sevenpart/>

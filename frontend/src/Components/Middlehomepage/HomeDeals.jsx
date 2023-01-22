@@ -26,7 +26,7 @@ const homeDeals = [
   
   ];
 
-function Fourthpart(){
+function HomeDeals(){
     return(
         <div>
 <Box mb="12px">
@@ -52,4 +52,4 @@ function Fourthpart(){
     )
 }
 
-export default Fourthpart;
+export default HomeDeals;

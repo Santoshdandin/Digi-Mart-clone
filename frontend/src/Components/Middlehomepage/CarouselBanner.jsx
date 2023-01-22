@@ -19,7 +19,7 @@ const bestDealsSlider = [
     
   ];
 
-function Firstpart(){
+function CarouselBanner(){
     return (
         <div>
             <Carousel
@@ -41,4 +41,4 @@ function Firstpart(){
             </div>
     )
 }
-export default Firstpart;
+export default CarouselBanner;
