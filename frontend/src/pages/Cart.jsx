@@ -106,7 +106,7 @@ console.log(items)
           </HStack>
           <Divider mt="5px" mb="5px"></Divider>
         </Box>
-       <Link > <Button w="100%" mt="15px" bgColor="#e42529" color="white" >CHECKOUT</Button> </Link>
+       <Link to="/checkout" > <Button w="100%" mt="15px" bgColor="#e42529" color="white"  >CHECKOUT</Button> </Link>
       </Box>
 
       </Flex>
