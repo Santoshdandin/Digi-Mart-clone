@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {Link} from "react-router-dom"
 
 import {
@@ -54,6 +54,20 @@ import kitchen from "../photo/kitchen.jpg"
 import rd from "../photo/rd.jpg"
 
 function Navbar() {
+  const [ state, setState ] = useState(false);
+const token=localStorage.getItem("token") || false;
+console.log(token);
+
+const handleLocalstorage = () => {
+  setState(false);
+  localStorage.removeItem("token");
+}
+
+useEffect(() => {
+ token ? setState(true) : setState(false)
+}, [state])
+
+
   return (
     <div>
       <Box>
@@ -205,7 +219,8 @@ function Navbar() {
               px="6px"
             >
               <FaUser />
-              <Link to="/login" color="white">Log in</Link>
+              { state ?  <Button color="white" onClick = { handleLocalstorage }>  Log out</Button>   :  <Link to="/login" color="white"> Login </Link>  }
+             
             </Box>
           </Box>
         </Flex>
