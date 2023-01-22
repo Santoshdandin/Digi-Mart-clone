@@ -44,7 +44,7 @@ if(payload.mobile.length<10){
     isClosable:true,
   })
 } else {
-  fetch("http://localhost:4001/users/register",{
+  fetch("https://wandering-plum-parka.cyclic.app/users/register",{
             method:"POST",
             body:JSON.stringify(payload),
             headers:{
