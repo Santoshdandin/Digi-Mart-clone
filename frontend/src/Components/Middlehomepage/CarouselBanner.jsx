@@ -16,7 +16,9 @@ const bestDealsSlider = [
       image:
         "https://www.reliancedigital.in/medias/FOE-Carousel-Banner-Gif.gif?context=bWFzdGVyfGltYWdlc3wxNjA5MzZ8aW1hZ2UvZ2lmfGltYWdlcy9oMGQvaGNiLzk4OTU0MDA4OTg1OTAuZ2lmfDc5MmMxMWQzOTVlZDBkNTRjNTY3ZWZhN2EyZDA1OGZlMGE4YjZhZGFjYmU4NmU2MjIzZjhlOWNjMmRjNTMwMTY",
     },
-    
+    {
+      image:"https://www.reliancedigital.in/medias/Static-Banner-Carousel-02.jpg?context=bWFzdGVyfGltYWdlc3wxNTM3MjUzfGltYWdlL2pwZWd8aW1hZ2VzL2gyNy9oZTkvOTk1MDk2OTIwMDY3MC5qcGd8NGViNjk1NTM4ZmI4NDhlYzdmZjVlNjRiYjZmMjA3YmUxOWUwYzJhNTJlNzI4OWI0NTVmMzUzODc3ZmM5ZmI4Yg",
+    }
   ];
 
 function CarouselBanner(){
