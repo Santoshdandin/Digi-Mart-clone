@@ -28,10 +28,25 @@ They sell their product both on shops as well as on website. This was a Group pr
 <li>Single Product Page</li>
 <li>Cart Page</li>
 </ul>
+                                                                                  
+## Contributor
 
+- [Ankur Kumar Chauhan](https://github.com/Ankur9900)
+- [Santosh](https://github.com/Santoshdandin)                                                                              
+-[Himanshu Gangwar](https://github.com/himanshudestiny)
+-[vaibhav firke](https://github.com/vaibhavfirke) 
+-[Sumeet More](https://github.com/sumeetmore1997)                                                                                  
+                                                                                  
 <h2>Deployed Link</h2>
 <p><h3 align="center"><a href=""><strong>Want to see live preview »</strong></a></h3></p>
 
 <h2>Presentation Link</h2>
 <p></p>
+                                
+   
+   ## Show your support
+
+Give a ⭐ if you like this project!                                
+                                
+                                
 
