@@ -3,22 +3,21 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 import CreateProd from './compontes/create_prod'
-import Home from './compontes/home';
+
+import Navabr from './compontes/navbar';
+import UpdateProd from './compontes/update_products';
+import Home from './pages/home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
-  const [data,setData]=useState();
-  const getdata= async()=>{
-   let data=await axios.get("https://ruby-antelope-veil.cyclic.app/products?search=samsung");
-   
-  }
-  useEffect(()=>{
-getdata()
-  },[])
-
   return (
     <div >
+  <Navabr/>
+  {/* <UpdateProd/> */}
      {/* <CreateProd/> */}
-
+  {/* <Login/>
+  <Signup/> */}
 <Home/>
     </div>
   )
