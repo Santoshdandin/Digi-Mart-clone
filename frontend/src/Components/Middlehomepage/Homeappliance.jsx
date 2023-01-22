@@ -1,5 +1,6 @@
-import { Badge, Box, Heading, Image ,Link} from "@chakra-ui/react";
+import { Badge, Box, Heading, Image } from "@chakra-ui/react";
 import Carousel from "better-react-carousel";
+import { Link } from "react-router-dom";
 
 
 
@@ -104,7 +105,7 @@ loop: true
 ]}>
     {homeapp.map((homeapp) => (
       <Carousel.Item>
-
+<Link to='/microwave oven'>
         <Box textAlign="left">
           <Box w="220px" h="185px">
           <Image cursor="pointer" w="180px" _hover={{
@@ -169,6 +170,7 @@ loop: true
             </Badge>
           </Box>
         </Box>
+        </Link>
       </Carousel.Item>
     ))}
   </Carousel>
