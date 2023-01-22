@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import {Box, Button, Divider, Flex, HStack, Image, Text} from "@chakra-ui/react"
 import { useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Cart = () => {
   const [count, setCount]=useState(1)
   const [ product, setProduct ] = useState([]);
   const { id } = useParams();
-
+const userID = localStorage.getItem("userID")
 //   useEffect(() => {
 //     fetch(`https://wandering-plum-parka.cyclic.app/cart`, {
 //       headers: {
@@ -97,7 +97,7 @@ useEffect(() => {
       })}
 
       <Box w={["100%","100%","50%","30%"]} p="15px">
-        <Button w="100%" bgColor="#e42529" color="white" >CHECKOUT</Button>
+        <Link to="/checkout"><Button w="100%" bgColor="#e42529" color="white" >CHECKOUT</Button></Link>
         <Box p="20px 10px 20px 10px" border="1px solid lightgray" mt="15px">
           <Text fontSize="16px" fontWeight="500">PRICE DETAILS</Text>
           <HStack justifyContent="space-between">

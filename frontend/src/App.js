@@ -11,12 +11,12 @@ function App() {
   return (
     <div>
 
-   {/* <Navbar/>
+   <Navbar/>
 
    <AllRoutes/>
-<Footer/>  */}
+<Footer/> 
 
-<Checkout/>
+{/* <Checkout/> */}
 
     </div>
   );
