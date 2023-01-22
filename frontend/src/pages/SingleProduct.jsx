@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { SimpleGrid, Box, Text, Image, Checkbox, Input, Button  } from '@chakra-ui/react'
+import { SimpleGrid, Box, Text, Image, Checkbox, Input, Button, useToast  } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { FaHome, FaShareAlt, FaPrint } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
@@ -13,6 +13,8 @@ import { useParams } from 'react-router-dom';
 const SingleProduct = () => {
   const [ product, setProduct ] = useState({});
   const { id } = useParams();
+  const toast = useToast(); 
+
 
   useEffect(() => {
     fetch(`https://wandering-plum-parka.cyclic.app/products/${id}`)
@@ -21,7 +23,7 @@ const SingleProduct = () => {
     .catch(err => console.log(err));
 },[id])
 
-
+const token = localStorage.getItem("token");
 
 const handleClick = () => {
   fetch(`https://wandering-plum-parka.cyclic.app/cart/create`, {
@@ -40,13 +42,29 @@ const handleClick = () => {
       "Authorization": localStorage.getItem("token"),
     }
   })
+  if(token) {
+    toast({
+      title:"Item added to the cart!",
+      description:"you can checkout to the cart page!",
+      status:"success",
+      position:"top",
+      duration:5000,
+      isClosable:true,
+    })
+  }
+  else {
+    toast({
+      title:"Item cannot be added to the cart!",
+      description:"Please login first",
+      status:"error",
+      position:"top",
+      duration:5000,
+      isClosable:true,
+    })
+  }
+  
 }
 
-
-console.log(product);
-
-
-  console.log(id);
   return (
     <div>
       <Box w='100%' pb='2' color='white' borderBottom='1px' borderColor='gray.300' display='flex' h='auto'>
