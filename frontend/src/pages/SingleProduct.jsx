@@ -29,6 +29,7 @@ const handleClick = () => {
   fetch(`https://wandering-plum-parka.cyclic.app/cart/create`, {
     method:"POST",
     body: JSON.stringify({
+      "qty":1,
       "name": product.name ,
         "img": product.img,
         "price": product.price,
