@@ -1,20 +1,20 @@
-
 import './App.css';
-// import Footer from './Components/Pages/Footer';
-// import Navbar from './Components/navbar/Navbar';
-// import AllRoutes from './AllRoutes/AllRoutes';
-//import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
+
+import Footer from './pages/Footer';
+import Navbar from './Components/navbar/Navbar';
+import AllRoutes from './AllRoutes/AllRoutes';
+
 
 
 function App() {
   return (
     <div>
-   {/* <Navbar/>
+
+   <Navbar/>
+
    <AllRoutes/>
-<Footer/> */}
-{/* <Cart/> */}
-<Checkout/>
+<Footer/> 
+
     
     </div>
   );

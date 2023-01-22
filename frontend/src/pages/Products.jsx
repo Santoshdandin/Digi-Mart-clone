@@ -9,7 +9,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { BsWindows } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import ProductsCard from './ProductsCard';
-
+import { useParams } from 'react-router-dom';
 
 const Products = () => {
 const nums = [1,2,3,4,5,6,7,8,9];
@@ -17,20 +17,34 @@ const nums = [1,2,3,4,5,6,7,8,9];
     const [ max, setMax ] = useState("");
     const [ page, setPage ] = useState(1);
     const [ items, setItems ] = useState([]);
-
+    const [ total, setTotal ] = useState([]);
+    const [ sort, setSort ] = useState("");
+    const { name } = useParams();
 
     useEffect(() => {
-         fetch(`https://rus-digital-televisions.onrender.com/mobilesandtablets?_page=${page}&_limit=8`)
+         fetch(`https://wandering-plum-parka.cyclic.app/products/category/${name}?search=samsung&_sort=${sort}&_page=${page}&_limit=12`)
          .then(res => res.json())
          .then(res => setItems(res))
          .catch(err => console.log(err));
-    },[page])
+
+         fetch(`https://wandering-plum-parka.cyclic.app/products/products/category/${name}`)
+         .then(res => res.json())
+         .then(res => setTotal( res ))
+         .catch(err => console.log(err));
+
+    },[page, sort, name])
+    
+    console.log(total);
+
+
   return (
     <div >
         <Box w='100%' pb='2' color='white' borderBottom='1px' borderColor='gray.300' display='flex'>
         <FaHome style={{marginTop:"8px", marginLeft:"10px", color:"grey", fontSize:"18px"}}/>
         <ChevronRightIcon style={{color:"grey", fontSize:"20px", marginTop:"8px"}}/>
         <Text color='grey' mt='1'>Search</Text>
+        <ChevronRightIcon style={{color:"grey", fontSize:"20px", marginTop:"8px"}}/>
+        <Text color='grey' mt='1'>{name}</Text>
         </Box>
         <Grid templateColumns='21% 78.5%' gap={1} bg='gray.100'>
           <GridItem w='100%' h='auto' p='2' >
@@ -67,15 +81,15 @@ const nums = [1,2,3,4,5,6,7,8,9];
             </Box>
             <Box h='auto' p='3' pl='4' border='1px' borderColor='gray.300' mt='2' align='left' bg='white'>
                 <Text align='left' fontSize='md' fontWeight='medium' color='blackAlpha.800'>Category</Text>
-                <Checkbox mt='2' colorScheme='blue' >Smartphones</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' >{name}</Checkbox>
             </Box>
             <Box h='auto' p='3' pl='4' border='1px' borderColor='gray.300' mt='2' align='left' display='grid' bg='white'>
                 <Text align='left' fontSize='md' fontWeight='medium' color='blackAlpha.800'>Brand</Text>
                 <Checkbox mt='2' colorScheme='blue' >Samsung</Checkbox>
                 <Checkbox mt='2' colorScheme='blue' >Xiaomi</Checkbox>
-                <Checkbox mt='2' colorScheme='blue' >OPPO</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' >LG</Checkbox>
                 <Checkbox mt='2' colorScheme='blue' >Tecno</Checkbox>
-                <Checkbox mt='2' colorScheme='blue' >VIVO</Checkbox>
+                <Checkbox mt='2' colorScheme='blue' >Sony</Checkbox>
                 <Checkbox mt='2' colorScheme='blue' >Realme</Checkbox>
             </Box>
           </GridItem>
@@ -93,16 +107,16 @@ const nums = [1,2,3,4,5,6,7,8,9];
           <Grid templateColumns='57% 45%' gap='auto' bg='white' mt='2' border='1px' borderColor='gray.300' >
            <GridItem w='100%' h='auto'>
             <Box p='2' align='left' bg='white'> 
-             <Text fontSize='2xl' fontWeight='bold'>LATEST MOBILE PHONES</Text>
-            <Text>(Showing 1- 24 products of 26 products)</Text>    
+             <Text fontSize='2xl' fontWeight='bold'>LATEST <span> {name} </span> </Text>
+            <Text>(Showing 1- 12 products of  <span>{total.length}</span> products )</Text>    
             </Box>
            </GridItem>
            <GridItem w='100%' h='auto' mt='4' >
             <Box display='flex' mt='2' h='auto' align='right'>
                 <Text fontSize='md' fontWeight='medium'>Sort By:</Text>
-                <Button h='auto' ml='2' fontSize='xs'>Relevance</Button>
-                <Button h='auto' bg='none' border='1px' borderColor='green' ml='2' fontSize='xs'>Price(Low-High)</Button>
-                <Button h='auto' ml='2' fontSize='xs'>Price(High-Low)</Button>
+                <Button h='auto' ml='2' fontSize='xs' value={sort} onClick={() => setSort("")}>Relevance</Button>
+                <Button h='auto' bg='none' border='1px' borderColor='green' ml='2' fontSize='xs' value={sort} onClick={() => setSort("asc")}>Price(Low-High)</Button>
+                <Button h='auto' ml='2' fontSize='xs' value={sort} onClick={() => setSort("desc")}>Price(High-Low)</Button>
                 <Box border='1px' ml='2' p='1' fontSize='lg' color='grey'><GiHamburgerMenu /></Box>
                 <Box border='1px' ml='2' p='1' fontSize='lg' color='blue' bg='gray.100'><BsWindows /></Box>
             </Box>
@@ -110,14 +124,14 @@ const nums = [1,2,3,4,5,6,7,8,9];
          </Grid>
          <Box display='flex' bg='white' mt='2' p='4'>
             <Text>Filters:</Text>
-            <Box border='1px' borderColor='gray.400' ml='2' p='1' pl='3' pr='3' display='flex'>latest-mobiles-jan-23  <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} /> </Box>
+            <Box border='1px' borderColor='gray.400' ml='2' p='1' pl='3' pr='3' display='flex'>latest- {name} -jan-23  <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} /> </Box>
             <Box border='1px' borderColor='gray.400' ml='2' p='1' pl='3' pr='3' display='flex'>Exclude out of Stock   <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} />  </Box>
             <Box border='1px' borderColor='blue.400' ml='2' p='1' pl='3' pr='3' bg='blue.300' display='flex' color='white' >Clear All    <RxCross2 style={{marginTop:"2px", marginLeft:"4px", fontSize:"20px"}} /> </Box>
          </Box>
 
          <SimpleGrid columns={[1,2,2,4,4,4]} spacing={2} mt='2'>
          { items.map((el) => (
-            <ProductsCard key={el.id} img={el.img} title={el.name} price={el.price} mrp={el.mrp} discount={el.discount} />
+            <ProductsCard key={el._id} img={el.img} title={el.name} price={el.price} mrp={el.mrp} discount={el.discount} id={el._id} />
          ))}
         </SimpleGrid>
          

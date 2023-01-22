@@ -15,15 +15,26 @@ import {
 } from "@chakra-ui/react";
 
 function Signup() {
+  const toast = useToast();
+  const [email,setEmail]=useState();
+  const [mobile,setMobile]=useState();
+  const [password,setpassword]=useState();
+  const [name,setName]=useState();
+  const payload={
+    name,email,mobile,password
+  }
 
-  const toast = useToast()
 
-  const alertSuccess = ()=>{
-    return (
-      
-alert("Registration Success")
-    )
-    
+  const handleSignup=(e)=>{
+e.preventDefault();
+axios
+      .post(`https://wandering-plum-parka.cyclic.app/users/register`, payload)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   return (
@@ -40,39 +51,39 @@ alert("Registration Success")
 
           <FormControl>
               <FormLabel>Name</FormLabel>
-              <Input name="name" type="text" placeholder="Enter Name"  />
+              <Input name="name" type="text" placeholder="Enter Name" value={name}  onInput={(e)=>setName(e.target.value)} />
               
     
             </FormControl>
 
             <FormControl>
               <FormLabel>Mobile</FormLabel>
-              <Input name="mobile" type="number" placeholder="Enter Mobile number"  />
+              <Input name="mobile" type="number" placeholder="Enter Mobile number" value={mobile}  onInput={(e)=>setMobile(e.target.value)}  />
               
     
             </FormControl>
     
             <FormControl>
               <FormLabel>Email adress</FormLabel>
-              <Input name="email" type="email" placeholder="Enter Email" />
+              <Input name="email" type="email" placeholder="Enter Email" value={email}  onInput={(e)=>setEmail(e.target.value)} />
               <FormHelperText>We'll never share your email.</FormHelperText>
     
             </FormControl>
     
             <FormControl>
               <FormLabel>Password</FormLabel>
-              <Input name="password" type="password"   />
+              <Input name="password" type="password" value={password}  onInput={(e)=>setpassword(e.target.value)}   />
               
               
             </FormControl>
     
             <FormControl>
               <Center>
-                <Button onClick={alertSuccess}
+                <Button 
      
            w="full"  _hover={{
                         bg: "red.600",
-                      }} variant="outline" color="white" bg="rgb(228, 37, 41)" mt={4}><Link href="/login" textDecoration="none" >Register</Link></Button>
+                      }} variant="outline" color="white" bg="rgb(228, 37, 41)" mt={4} onClick={handleSignup}><Link href="/login" textDecoration="none" >Register</Link></Button>
               </Center>
     
             </FormControl>
