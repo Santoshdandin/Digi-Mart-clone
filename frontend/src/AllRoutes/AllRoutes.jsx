@@ -6,6 +6,7 @@ import Products from '../pages/Products'
 import SingleProduct from '../pages/SingleProduct'
 import Home from "../Components/Middlehomepage/Mainhomepage"
 import Cart from "../pages/Cart"
+import Pagenotfound from "../pages/PagenotFound"
 
 
 
@@ -22,7 +23,7 @@ function AllRoutes() {
         <Route path="/:name/:id" element={<SingleProduct />}></Route>
         <Route path="/cart" element={<Cart/>}></Route>
 
-         {/* <Route path="*" element={<Pagenotfound/>}></Route> */}
+         <Route path="*" element={<Pagenotfound/>}></Route>
     </Routes>
 
     </div>

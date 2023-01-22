@@ -50,12 +50,13 @@ userRouter.post("/login", async(req,res)=>{
 
     try {
         const user = await UserModel.find({email})
+        const userData = await UserModel.findOne({email})
 
         if(user.length>0){
             bcrypt.compare(password,user[0].password,(err,result)=>{
                 if(result){
                     const token = jwt.sign({userID:user[0]._id},process.env.key);
-                    res.send({"msg":"Login Successfull", "login":true,"token":token})
+                    res.send({"msg":"Login Successfull", "login":true,"token":token,"userData":userData})
                 } else {
                     res.send({"msg":"wrong credential"})
                 }

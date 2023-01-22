@@ -12,6 +12,8 @@ import {
   Center,
   Link,
   useToast,
+  Image,
+  Flex
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -47,6 +49,7 @@ const handleLogin = (e) =>{
         .then(res=>{
           console.log(res)
           localStorage.setItem("token",res.token)
+          localStorage.setItem("user",JSON.stringify(res))
         if(res.msg==="Login Successfull"){
           toast({
             title:"Login Successfull",
@@ -96,11 +99,13 @@ const handleLogin = (e) =>{
 <div>
 
   
-<Box display="flex" justifyContent="flex-end" mr="20px">
+<Box w="90%" m="auto" display="flex" flexDirection={{lg:"row",sm:"column-reverse",md:"row"}} justifyContent={{lg:"space-between",sm:"center"}}>
 
+<Box my={{base:4, sm:4, md:8, lg:10 }} >
+  <Image src="https://www.reliancedigital.in/akamai/images/mobile/Login-banner.jpeg"/>
+</Box>
 
-
-    <Box width={{base:"xs", sm:"xs", md:"xl", lg:"lg"}} >
+    <Box width={{base:"xs", sm:"full", md:"xl", lg:"lg"}} >
 
     <form onSubmit={handleLogin}>
 
