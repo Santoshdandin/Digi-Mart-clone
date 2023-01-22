@@ -133,7 +133,7 @@ function Eightpart(){
 
 <Box pb="32px">
 
-<Box mb="32px" pt="32px" px="28px"><Heading  as="span" fontSize="24px" fontWeight="0.7em" mb="20px" pr="10px" >Trending Laptops</Heading> <Link Link as="span" borderLeft="1px" color="blue" px="12px"> View All</Link></Box>
+<Box mb="32px" pt="32px" px="28px"><Heading  as="span" fontSize="24px" fontWeight="0.7em" mb="20px" pr="10px" >Trending Laptops</Heading> <Link Link as="span" borderLeft="1px" color="white" px="12px" border="2px" bg="blue" p="5px"> View All</Link></Box>
 
   <Carousel cols={5} rows={1} gap={6} loop={true} showDots={false} responsiveLayout={[
 {
