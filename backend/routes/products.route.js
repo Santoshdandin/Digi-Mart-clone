@@ -1,6 +1,7 @@
 const express = require("express");
 const productRoute = express.Router();
 const { productModel } = require("../models/products.model");
+
 const multer=require("multer");
 
 const upload=multer({
