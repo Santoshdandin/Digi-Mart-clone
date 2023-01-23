@@ -37,11 +37,16 @@ They sell their product both on shops as well as on website. This was a Group pr
 - [vaibhav firke](https://github.com/vaibhavfirke) 
 - [Sumeet More](https://github.com/sumeetmore1997)                                                                                  
                                                                                   
-<h2>Deployed Link</h2>
-<p><h3 align="center"><a href=""><strong>Want to see live preview »</strong></a></h3></p>
+<h2>Deployed Fronted Link</h2>
+<p><h3 align="center"><a href="https://frontend-ankur9900.vercel.app/"><strong>Want to see live preview »</strong></a></h3></p>
+
+
+<h2>Deployed Backend Link</h2>
+<p><h3 align="center"><a href="https://wandering-plum-parka.cyclic.app/products/"><strong>Want to see live preview »</strong></a></h3></p>
+
 
 <h2>Presentation Link</h2>
-<p></p>
+<p><h3 align="center"><a href="https://drive.google.com/file/d/16QXIrbVeqK1GEXH7n4UuilD90xMO4REX/view"><strong>group Presentation video link  »</strong></a></h3></p>
                                 
    
    ## Show your support
