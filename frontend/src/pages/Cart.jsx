@@ -4,19 +4,14 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Cart = () => {
-  const [count, setCount]=useState(1)
+  
   const [items,setItems] = useState([])
 
-  let totalPrice = items.reduce((a,c)=>a+(c.price*count),0) || 0
+  let totalPrice = items.reduce((a,c)=>a+(c.price*c.count),0) || 0
 
   useEffect(() => {
-    
 getItems()
-       
-
-  
-
-  },[ ])
+  },[])
 
   const deleteItem = (ID)=>{
     fetch(`https://wandering-plum-parka.cyclic.app/cart/delete/${ID}`,{
@@ -38,12 +33,23 @@ getItems()
        .then(res => res.json())
        .then(res => {
         console.log(res)
+        let count = "count"
+        res.map((el)=> el[count]=1)
+  
         setItems(res)
       })
        .catch(err => console.log(err));
-
    }
 
+const decrement = (el)=>{
+el.count--
+setItems([...items])
+  
+}
+const increment = (el)=>{
+  el.count++
+  setItems([...items])
+}
 console.log(items)
   return (
     <Box w="90%" m="auto">
@@ -61,10 +67,10 @@ console.log(items)
           <Box alignItems="center" w="20%" >
             <Image m="auto" w="130px" h="150px" src={el.img}/>
             <Flex m="auto" w="120px">
-              <Button variant="outline" disabled={count==1} onClick={()=>(setCount(count-1))}>-</Button>
-              <Box m="auto">{count}</Box>
+              <Button variant="outline" disabled={el.count==1} onClick={()=>decrement(el)}>-</Button>
+              <Box m="auto">{el.count}</Box>
   
-              <Button variant="outline" onClick={()=>(setCount(count+1))}>+</Button>
+              <Button variant="outline" onClick={()=> increment(el)}>+</Button>
             </Flex>
           </Box>
           <Box p="10px" w="45%">
