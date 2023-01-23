@@ -31,6 +31,12 @@
 .form_head img{
     margin: auto;
 }
+.form_head>h1{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
 .form span{
     color: red;
 }
