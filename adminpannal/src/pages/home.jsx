@@ -1,14 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./home.css";
+import Getdata from "../functions/getProduct";
+import { useToast } from "@chakra-ui/react";
+
 function Home() {
+  const toast=useToast()
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(20);
+  const [valid,setValid]=useState(localStorage.getItem("Token"))
+  const navigate=useNavigate();
+  
 
   const getdata = async () => {
    await axios.get(
-      `https://wandering-plum-parka.cyclic.app/products?_search=&_page=${page}&_limit=${limit}`
+      `https://wandering-plum-parka.cyclic.app/products?_search=&_page=${page}&_limit=${limit}&_sort=asc`
     ) .then(function (response) {
       setData(response.data);
     })
@@ -19,14 +27,56 @@ function Home() {
     
   };
 
+  const handleDelete= async (id)=>{
+   await axios.delete(
+      `https://wandering-plum-parka.cyclic.app/products/delete/${id}`
+    ) .then(function (response) {
+      getdata()
+      toast({
+        title:"Product Deleted",
+        description:"seccessfull",
+        status:"success",
+        position:"top",
+        duration:5000,
+        isClosable:true,
+      })
+    })
+    .catch(function (error) {
+      toast({
+        title:"Filled to Delete Product",
+        description:"Fill all the required Detail's",
+        status:"error",
+        position:"top",
+        duration:5000,
+        isClosable:true,
+      })
+      console.log(error);
+    });
+  }
+
   useEffect(() => {
-    getdata();
+    if(valid=="true"){
+      console.log(valid)
+    }else{
+      toast({
+        title:"Login First !",
+        description:"To see home page Login",
+        status:"error",
+        position:"top",
+        duration:5000,
+        isClosable:true,
+      })
+      navigate("/")
+    }
+    
+   getdata()
+
   }, [page]);
 
   return (
     <div>
       <div className="prod">
-        {data?.map((el) => {
+        {data&&data?.map((el) => {
           return (
             <div key={el._id} className="single_prod">
               <img src={el.img} alt="" />
@@ -36,8 +86,9 @@ function Home() {
               <p>₹{el.mrp}</p>
               <h5>₹{el.price}</h5>
               <div>
-              <button >Update</button>
-              <button>Delete</button>
+              <button > <Link to={`/update/${el._id}`}>Update</Link></button>
+              
+              <button onClick={()=>handleDelete(el._id)} >Delete</button>
 
               </div>
             </div>

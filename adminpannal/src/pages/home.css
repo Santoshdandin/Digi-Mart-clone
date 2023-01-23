@@ -25,12 +25,15 @@
     border-radius: 7px;
 }
 .single_prod{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         padding-left: 10px;
     padding-right: 10px;
     border-radius: 10px;
 }
-.single_prod div>button{
+.single_prod div button{
 display: block;
 width: 100px;
 height: 35px;

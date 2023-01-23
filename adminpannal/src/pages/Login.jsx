@@ -13,11 +13,13 @@ import {
   Link,
   useToast,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const toast = useToast();
   const [email, setEmail] = useState();
   const [password, setpassword] = useState();
+  const navigate=useNavigate()
   const payload = {
     email,
     password,
@@ -27,12 +29,30 @@ function Login() {
     e.preventDefault();
       axios
       .post(`https://wandering-plum-parka.cyclic.app/users/login`, payload)
-      .then(function (response) {
+      .then(function (res) {
         // console.log(response.data.token);
-        if(response.data.token){
-          localStorage.setItem("token",JSON.stringify(response.data.token))
-        }else{
-          localStorage.setItem("token",JSON.stringify("wrong credentials"))
+        
+        if(res.data.msg==="Login Successfull"){
+          localStorage.setItem("Token",JSON.stringify(true));
+          toast({
+            title:"Login Successfull",
+            description:"You are redirected to home page",
+            status:"success",
+            position:"top",
+            duration:5000,
+            isClosable:true,
+          })
+
+          navigate("/home")
+        } else if(res.data.msg==="wrong credential"){
+          toast({
+            title:"Login failed",
+            description:"Wrong credentials",
+            status:"error",
+            position:"top",
+            duration:5000,
+            isClosable:true,
+          })
         }
       })
       .catch(function (error) {
@@ -94,7 +114,7 @@ function Login() {
               </Center>
             </FormControl>
 
-            <Box>
+            {/* <Box>
               Don't have account?{" "}
               <Link
                 href="/signup"
@@ -105,7 +125,7 @@ function Login() {
               >
                 Register
               </Link>{" "}
-            </Box>
+            </Box> */}
           </VStack>
         </Box>
       </Box>

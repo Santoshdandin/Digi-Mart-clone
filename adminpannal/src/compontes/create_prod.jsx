@@ -1,7 +1,9 @@
 import "./create_product.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import product from "../images/images.png";
+import { useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 const url = "https://wandering-plum-parka.cyclic.app/products/create";
 function CreateProd() {
   const [img, setImg] = useState("");
@@ -11,7 +13,9 @@ function CreateProd() {
   const [discount, setDiscount] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
-
+  const [valid,setValid]=useState(localStorage.getItem("Token"))
+  const navigate=useNavigate();
+  const toast=useToast()
   const createPost = async () => {
     const pay = {
       img,
@@ -27,9 +31,37 @@ function CreateProd() {
       await axios
         .post(url, pay)
         .then(function (response) {
-          console.log(response);
+         
+          if(response.data?.err?.name=="ValidationError"){
+            toast({
+              title:"Filled to Created Product",
+              description:"Fill all the required Detail's",
+              status:"error",
+              position:"top",
+              duration:5000,
+              isClosable:true,
+            })
+          }else{
+
+            toast({
+              title:"Product Created Successfully",
+              description:"you can move to Home page",
+              status:"success",
+              position:"top",
+              duration:5000,
+              isClosable:true,
+            })
+          }
         })
         .catch(function (error) {
+          toast({
+            title:"Filled to Created Product",
+            description:"Fill all the required Detail's",
+            status:"error",
+            position:"top",
+            duration:5000,
+            isClosable:true,
+          })
           console.log(error);
         });
     } catch (err) {
@@ -49,9 +81,28 @@ function CreateProd() {
     const base64 = await convertToBase64(file);
     setImg(base64);
   };
+  useEffect(() => {
+    if(valid=="true"){
+      console.log(valid)
+    }else{
+      toast({
+        title:"Login First !",
+        description:"To create Product Login",
+        status:"error",
+        position:"top",
+        duration:5000,
+        isClosable:true,
+      })
+      navigate("/")
+    }
+    
+   
+
+  },[]);
 
   return (
     <div className="form_head">
+      <h1>Create Product</h1>
       <form onSubmit={handleSubmit} className="form">
         <label htmlFor="file-upload" className="custom-file-upload">
           <img src={img ? img : product} alt="product Image" />
