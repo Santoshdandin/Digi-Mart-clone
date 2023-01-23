@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import {Box, Button, Divider, Flex, HStack, Image, Text} from "@chakra-ui/react"
+import {Box, Button, Divider, Flex, HStack, Image, Text, Toast, useToast} from "@chakra-ui/react"
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Cart = () => {
   
   const [items,setItems] = useState([])
-
+const toast=useToast()
   let totalPrice = items.reduce((a,c)=>a+(c.price*c.count),0) || 0
 
   useEffect(() => {
@@ -19,10 +19,20 @@ getItems()
         headers:{
             "Authorization":localStorage.getItem("token")
         }
+
     }).finally(()=>{
       getItems()
     })
+    toast({
+      title:"Item Removed",
+      description:"Deletes Successfully",
+      status:"success",
+      position:"top",
+      duration:5000,
+      isClosable:true,
+    })
    }
+
 
    const getItems = ()=>{
     fetch(`https://wandering-plum-parka.cyclic.app/cart`,{
@@ -51,6 +61,11 @@ const increment = (el)=>{
   setItems([...items])
 }
 console.log(items)
+
+// const cartdelete=(id)=>{
+  
+// }
+
   return (
     <Box w="90%" m="auto">
       <Flex>
@@ -112,7 +127,7 @@ console.log(items)
           </HStack>
           <Divider mt="5px" mb="5px"></Divider>
         </Box>
-       <Link to="/checkout" > <Button w="100%" mt="15px" bgColor="#e42529" color="white"  >CHECKOUT</Button> </Link>
+       <Link to="/payment" > <Button w="100%" mt="15px" bgColor="#e42529" color="white"  >CHECKOUT</Button> </Link>
       </Box>
 
       </Flex>
