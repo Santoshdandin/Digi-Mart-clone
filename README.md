@@ -9,6 +9,8 @@ They sell their product both on shops as well as on website. This was a Group pr
 <img src="https://i.postimg.cc/2jbHBD85/Screenshot-77.png" alt="Nyresa" border="0">
 <img src="https://i.postimg.cc/yd5vrfnB/Screenshot-78.png" alt="Nyresa" border="0">
 <img src="https://i.postimg.cc/NFHph1PX/Screenshot-79.png" alt="Nyresa" border="0">
+<img src="https://i.postimg.cc/DwVfmW7F/Whats-App-Image-2023-01-23-at-1-23-08-PM.jpg" alt="Nyresa" border="0">
+<img src="https://i.postimg.cc/W1MNZ24Z/Whats-App-Image-2023-01-23-at-1-23-08-PM-1.jpg" alt="Nyresa" border="0">
 <h2>Tech Stacks we have used</h2>
 <ul>
 <li>React</li>
