@@ -9,29 +9,25 @@ function Home() {
   const toast=useToast()
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
+  
   const [limit, setLimit] = useState(20);
   const [valid,setValid]=useState(localStorage.getItem("Token"))
   const navigate=useNavigate();
   
-
-  const getdata = async () => {
-   await axios.get(
-      `https://wandering-plum-parka.cyclic.app/products?_search=&_page=${page}&_limit=${limit}&_sort=asc`
-    ) .then(function (response) {
-      setData(response.data);
+  const handleData=()=>{
+    Getdata({page,limit}).then((res)=>{
+      setData(res.data)
+      
+    }).catch((err)=>{
+      console.log(err)
     })
-    .catch(function (error) {
-      console.log(error);
-    });
-    
-    
-  };
+    }
 
   const handleDelete= async (id)=>{
    await axios.delete(
       `https://wandering-plum-parka.cyclic.app/products/delete/${id}`
     ) .then(function (response) {
-      getdata()
+     handleData()
       toast({
         title:"Product Deleted",
         description:"seccessfull",
@@ -56,7 +52,7 @@ function Home() {
 
   useEffect(() => {
     if(valid=="true"){
-      console.log(valid)
+      
     }else{
       toast({
         title:"Login First !",
@@ -69,12 +65,12 @@ function Home() {
       navigate("/")
     }
     
-   getdata()
+   handleData()
 
   }, [page]);
 
   return (
-    <div>
+    <div className="parent">
       <div className="prod">
         {data&&data?.map((el) => {
           return (

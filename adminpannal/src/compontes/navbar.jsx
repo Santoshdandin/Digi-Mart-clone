@@ -1,12 +1,15 @@
 import "./navbar.css"
 import logo from "../images/logo.jpeg"
+
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+
 function Navabr(){
   const navigate=useNavigate()
   const [query,setQuery]=useState("smarttv");
   const [token,setToken]=useState(false)
+ const [sort,setSort]=useState("asc")
   const handleSearch=(e)=>{
     let id;
     clearInterval(id)
@@ -14,9 +17,12 @@ function Navabr(){
       setQuery(e.target.value)
     },2000)
   }
+
+
   let T=JSON.parse(localStorage.getItem("Token"))
   useEffect(()=>{
     setToken(T)
+   
   },[T])
     return (
         <div>
@@ -30,8 +36,8 @@ function Navabr(){
   </div>
   <div className="navbelo"></div>
   <div className="add">
-    <button>Sort Low to High</button>
-    <button>Sort High to Low</button> 
+    <button onClick={()=>setSort("asc")}>Sort Low to High</button>
+    <button onClick={()=>setSort("desc")}>Sort High to Low</button> 
   <Link to="/createProduct">
 
   <button>Create Products</button>

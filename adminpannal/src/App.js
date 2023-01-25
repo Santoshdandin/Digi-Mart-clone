@@ -1,25 +1,13 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react'
-import './App.css'
-
-import CreateProd from './compontes/create_prod'
-
-import Navabr from './compontes/navbar';
-import UpdateProd from './compontes/update_products';
-import AllRoutes from './pages/allroutes';
-import Home from './pages/home';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-
+import Navabr from "./compontes/navbar";
+import AllRoutes from "./pages/allroutes";
+import "./App.css"
 function App() {
   return (
-    <div >
-  <Navabr/>
-  <AllRoutes/>
+    <div className="App">
+      <Navabr />
+      <AllRoutes />
     </div>
-  )
+  );
 }
 
-export default App
-
-
+export default App;

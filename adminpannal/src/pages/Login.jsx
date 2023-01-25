@@ -65,7 +65,7 @@ function Login() {
     <div>
       
       <Box display="flex" justifyContent="flex-end" mr="20px">
-        <Box width={{ base: "xs", sm: "xs", md: "xl", lg: "lg" }}>
+        <Box width={{ base: "xs", sm: "xs", md: "xl", lg: "lg" }} bg="white">
           <VStack
             width="full"
             boxShadow="xl"

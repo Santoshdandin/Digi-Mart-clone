@@ -1,10 +1,11 @@
-/* .App{
-  display: flex;
-  justify-content: center;
-}
+ /* .App{
+background-color: rgb(177, 174, 171);
+width: 100%;
+height: auto;
+} */
 
 
-form{
+/* form{
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -14,7 +15,7 @@ form{
 h3{
   margin: 0;
   margin-top: 1em;
-}
+} */
 
 /* input[type="file"] {
   display: none;
